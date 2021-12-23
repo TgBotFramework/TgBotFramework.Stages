@@ -1,7 +1,7 @@
 namespace TgBotFramework.Stages
 {
-    public interface IStageContext : IUpdateContext
+    public interface IStageContext 
     {
-        public IUserState UserState { get; set; }
+        public IUserState UserStage { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace TgBotFramework.Stages
 {
-    public abstract class BasicStage<TContext> : IUpdateHandler<TContext> where TContext : IStageContext 
+    public abstract class BasicStage<TContext> : IUpdateHandler<TContext> where TContext : UpdateContext, IStageContext
     {
         public virtual async Task Enter(TContext state)
         {
@@ -12,8 +12,8 @@ namespace TgBotFramework.Stages
         
         public virtual async Task Exit(TContext state)
         {
-            state.UserState.Stage = "default";
-            state.UserState.Step = 0;
+            state.UserStage.Stage = "default";
+            state.UserStage.Step = 0;
         }
 
         public abstract Task HandleAsync(TContext context, UpdateDelegate<TContext> next,
